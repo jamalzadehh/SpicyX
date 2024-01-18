@@ -1,0 +1,96 @@
+﻿@model List<Chef>
+
+@{
+    int count = 0;
+}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title .h1">Team</h1>
+
+            <a asp-action="create" class="btn btn-success">
+                Create Team
+            </a>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                FullName
+                            </th>
+                            <th>
+                                Position
+                            </th>
+                            <th>
+                                Facebook
+                            </th>
+                            <th>
+                                Twitter
+                            </th>
+                            <th>
+                                Linkedin
+                            </th>
+                            <th>
+                                Google
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                            <th>
+                                Settings
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>
+                                    <i class="@item.ImageUrl"></i>
+                                </td>
+                                <td>
+                                    @item.FullName
+                                </td>
+                                <td>
+                                    @item.Position
+                                </td>
+                                <td>
+                                    @item.Fcblink
+                                </td>
+                                <td>
+                                    @item.twtlink
+                                </td>
+                                <td>
+                                    @item.gglink
+                                </td>
+                                <td>
+                                    @item.linkedin
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn-sm btn btn-danger">
+                                            <i class="mdi mdi-delete-forever btn-icon-primary">
+                                            </i>
+                                        </a>
+                                        <a asp-action="Update" asp-route-id="@item.Id" class="btn-sm btn btn-warning">
+                                            <i class="mdi mdi-lead-pencil btn-icon-primary">
+                                            </i>
+                                        </a>
+                                        <a asp-action="Detail" asp-route-id="@item.Id" class="btn-sm btn btn-primary">
+                                            <i class="mdi mdi-open-in-new btn-icon-primary">
+                                            </i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
